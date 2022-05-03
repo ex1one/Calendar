@@ -1,6 +1,7 @@
 {
   "name": "webpack-react",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open",
@@ -36,11 +37,19 @@
     "@babel/preset-env": "^7.16.11",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.11",
+    "@types/react-redux": "^7.1.24",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/redux-thunk": "^2.1.0",
+    "antd": "^4.20.2",
+    "axios": "^0.27.2",
     "babel-loader": "^8.2.4",
+    "moment": "^2.29.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-redux": "^8.0.0",
-    "react-router-dom": "^6.2.1",
-    "redux-saga": "^1.1.3"
+    "react-redux": "^8.0.1",
+    "react-router-dom": "^6.3.0",
+    "redux": "^4.2.0",
+    "redux-saga": "^1.1.3",
+    "redux-thunk": "^2.4.1"
   }
 }

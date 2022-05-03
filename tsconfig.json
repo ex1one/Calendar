@@ -9,19 +9,18 @@
       "@components": ["component/*"]
     },
     "noEmit": true,
-
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "es6",
-    "jsx": "preserve",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "module": "es6",
+    "jsx": "preserve",
   },
   "exclude": [
     "./node_modules"
