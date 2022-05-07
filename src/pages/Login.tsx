@@ -1,9 +1,14 @@
 import React from 'react';
+import { Container } from '@mui/material';
+import LoginForm from '../components/LoginForm/LoginForm';
 
 const Login = () => (
-  <div>
-    <h1>ЛОГИН</h1>
-  </div>
+  <Container sx={{
+    display: 'flex', alignItems: 'center', height: '100vh', justifyContent: 'center',
+  }}
+  >
+    <LoginForm />
+  </Container>
 );
 
 export default Login;
