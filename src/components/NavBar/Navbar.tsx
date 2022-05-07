@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import {
   AppBar, Badge, Box, Button, Modal, Toolbar, Typography,
@@ -17,6 +18,20 @@ const Navbar = () => {
   const showNotifications = () => {
     setShow((state) => !state);
   };
+=======
+import React from 'react';
+import {
+  AppBar, Button, Toolbar, Typography,
+} from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { AnyAction } from 'redux';
+import useTypedSelector from '../../hooks/useTypedSelector';
+import { logout } from '../../store/reducers/auth/action-creators';
+
+const Navbar = () => {
+  const { isAuth, user } = useTypedSelector((state) => state.auth);
+  const dispatch = useDispatch();
+>>>>>>> 9a3e35e (Creating authorization)
 
   return (
     <AppBar position="static">
@@ -29,6 +44,7 @@ const Navbar = () => {
               >
                 Ваш аккаунт
               </Typography>
+<<<<<<< HEAD
               <IconButton
                 onClick={showNotifications}
                 color="inherit"
@@ -52,6 +68,13 @@ const Navbar = () => {
               </IconButton>
               <Button
                 onClick={logout}
+=======
+              <div style={{ color: 'inherit', fontSize: '20px', marginRight: 20 }}>
+                {user.username}
+              </div>
+              <Button
+                onClick={() => dispatch(logout() as unknown as AnyAction)}
+>>>>>>> 9a3e35e (Creating authorization)
                 variant="outlined"
                 color="inherit"
               >
