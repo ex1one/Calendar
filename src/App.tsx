@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import AppRouter from './components/AppRouter/AppRouter';
-import Navbar from './components/NavBar/Navbar';
 import './App.scss';
 import useActions from './hooks/useActions';
 import { IUser } from './models/IUser';
+import Navbar from './components/NavBar/Navbar';
 
 const App = () => {
   const { setIsAuth, setUser } = useActions();

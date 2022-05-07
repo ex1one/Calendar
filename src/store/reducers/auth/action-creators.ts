@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   EAuthActionTypes, SetAuthAction, SetErrorAction, SetIsLoadingAction, SetUserAction,
 } from './types';
