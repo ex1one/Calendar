@@ -4,14 +4,11 @@ import {
 } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
 import { CircularProgress } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
-import { AnyAction } from 'redux';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import styles from './loginForm.module.scss';
 import useActions from '../../hooks/useActions';
 
 const LoginForm = () => {
-  const dispatch = useDispatch();
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string | number>('');
   const [userNameDirty, setUserNameDirty] = useState(false);
@@ -42,7 +39,6 @@ const LoginForm = () => {
   const submit = (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     login(userName, password);
-    dispatch(login(userName, password) as unknown as AnyAction);
   };
 
   return (

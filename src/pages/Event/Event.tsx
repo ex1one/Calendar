@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Box, Button, Grid, Modal, Typography,
+  Box, Button, Modal, Typography,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import EventCalendar from '../../components/Calendar/EventCalendar';
-import EventForm from '../../components/EventForm.tsx/EventForm';
+import { Grid } from '@material-ui/core';
+import EventCalendar from 'components/Calendar/EventCalendar';
+import EventForm from 'components/EventForm.tsx/EventForm';
 import useActions from '../../hooks/useActions';
 import useTypedSelector from '../../hooks/useTypedSelector';
 
