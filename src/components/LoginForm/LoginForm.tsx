@@ -3,21 +3,19 @@ import {
   Avatar, Button, Grid, Paper, TextField,
 } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
 import { CircularProgress } from '@material-ui/core';
-import { AnyAction } from 'redux';
-import { login } from '../../store/reducers/auth/action-creators';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import styles from './loginForm.module.scss';
+import useActions from '../../hooks/useActions';
 
 const LoginForm = () => {
-  const dispatch = useDispatch();
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string | number>('');
   const [userNameDirty, setUserNameDirty] = useState(false);
   const [passwordDirty, setPasswordDirty] = useState(false);
   const [formValid, setFormValid] = useState(false);
   const { error, isLoading } = useTypedSelector((state) => state.auth);
+  const { login } = useActions();
 
   const blurHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     switch (event.target.name) {
@@ -40,7 +38,7 @@ const LoginForm = () => {
 
   const submit = (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(login(userName, password) as unknown as AnyAction);
+    login(userName, password);
   };
 
   return (
@@ -80,10 +78,11 @@ const LoginForm = () => {
           />
           {isLoading ? <CircularProgress /> : <div className={styles.error}>{error}</div>}
           <Button
+            sx={{ height: '40px', background: 'primary' }}
             disabled={!formValid}
             color="primary"
-            type="submit"
             variant="contained"
+            type="submit"
             fullWidth
           >
             Войти

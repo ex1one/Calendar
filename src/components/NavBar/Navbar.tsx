@@ -1,15 +1,15 @@
 import React from 'react';
 import {
-  AppBar, Button, Toolbar, Typography,
+  AppBar, Badge, Button, Toolbar, Typography,
 } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { AnyAction } from 'redux';
+import { IconButton } from '@material-ui/core';
+import { AccountCircle, NotificationsNone } from '@mui/icons-material';
 import useTypedSelector from '../../hooks/useTypedSelector';
-import { logout } from '../../store/reducers/auth/action-creators';
+import useActions from '../../hooks/useActions';
 
 const Navbar = () => {
   const { isAuth, user } = useTypedSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  const { logout } = useActions();
 
   return (
     <AppBar position="static">
@@ -22,11 +22,24 @@ const Navbar = () => {
               >
                 Ваш аккаунт
               </Typography>
-              <div style={{ color: 'inherit', fontSize: '20px', marginRight: 20 }}>
+              <IconButton
+                color="inherit"
+              >
+                <Badge badgeContent={1} color="error">
+                  <NotificationsNone />
+                </Badge>
+              </IconButton>
+              <IconButton
+                edge="start"
+                aria-label="account of current user"
+                aria-haspopup="true"
+                color="inherit"
+              >
                 {user.username}
-              </div>
+                <AccountCircle />
+              </IconButton>
               <Button
-                onClick={() => dispatch(logout() as unknown as AnyAction)}
+                onClick={logout}
                 variant="outlined"
                 color="inherit"
               >
