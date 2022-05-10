@@ -1,33 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Box, Button, Modal, Typography,
+  Box, Button, Grid, Modal, Typography,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import EventCalendar from '../../components/Calendar/EventCalendar';
 import EventForm from '../../components/EventForm.tsx/EventForm';
 import useActions from '../../hooks/useActions';
+import useTypedSelector from '../../hooks/useTypedSelector';
 
 const Event = () => {
-  const [open, setOpen] = React.useState(false);
-  const { fetchGuests } = useActions();
+  const [open, setOpen] = useState<boolean>(false);
+  const { fetchGuests, fetchEvents } = useActions();
+  const { guests, events } = useTypedSelector((state) => state.event);
+  const { user } = useTypedSelector((state) => state.auth);
 
   useEffect(() => {
     fetchGuests();
+    fetchEvents(user.username);
   }, []);
 
   const handleClick = () => {
     setOpen((state) => !state);
   };
+
   return (
-    <Box>
-      <EventCalendar event={[]} />
-      <Button onClick={handleClick}>Добавить событтие</Button>
+    <Grid>
+      <EventCalendar events={events} />
+      <Button onClick={handleClick}>Добавить событие</Button>
       <Modal
         open={open}
         onClose={handleClick}
       >
         <Box sx={{
-          position: 'absolute' as const,
+          position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
@@ -50,11 +55,11 @@ const Event = () => {
             />
           </Typography>
           <Box sx={{ mt: 2 }}>
-            <EventForm />
+            <EventForm close={setOpen} guests={guests} />
           </Box>
         </Box>
       </Modal>
-    </Box>
+    </Grid>
   );
 };
 

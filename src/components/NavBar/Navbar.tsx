@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  AppBar, Badge, Button, Toolbar, Typography,
+  AppBar, Badge, Box, Button, Modal, Toolbar, Typography,
 } from '@mui/material';
 import { IconButton } from '@material-ui/core';
 import { AccountCircle, NotificationsNone } from '@mui/icons-material';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useActions';
+import EventModal from './EventModal';
 
 const Navbar = () => {
   const { isAuth, user } = useTypedSelector((state) => state.auth);
   const { logout } = useActions();
+  const { events } = useTypedSelector((state) => state.event);
+  const [show, setShow] = useState<boolean>(false);
+
+  const showNotifications = () => {
+    setShow((state) => !state);
+  };
 
   return (
     <AppBar position="static">
@@ -23,12 +30,17 @@ const Navbar = () => {
                 Ваш аккаунт
               </Typography>
               <IconButton
+                onClick={showNotifications}
                 color="inherit"
               >
-                <Badge badgeContent={1} color="error">
+                <Badge
+                  badgeContent={events.length}
+                  color="error"
+                >
                   <NotificationsNone />
                 </Badge>
               </IconButton>
+              <EventModal showNotifications={showNotifications} events={events} show={show} />
               <IconButton
                 edge="start"
                 aria-label="account of current user"

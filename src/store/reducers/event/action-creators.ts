@@ -24,6 +24,19 @@ const EventActionCreators = {
       });
     dispatch(EventActionCreators.setIsLoading(false));
   },
+  createEvent: (event: IEvent) => (dispatch: AppDispatch) => {
+    const events = localStorage.getItem('events') || '[]';
+    const json = JSON.parse(events) as IEvent[];
+    json.push(event);
+    dispatch(EventActionCreators.setEvents(json));
+    localStorage.setItem('events', JSON.stringify(json));
+  },
+  fetchEvents: (userName: string) => (dispatch: AppDispatch) => {
+    const events = localStorage.getItem('events') || '[]';
+    const json = JSON.parse(events) as IEvent[];
+    const currentUserEvent = json.filter((ev) => ev.author === userName || ev.guest === userName);
+    dispatch(EventActionCreators.setEvents(currentUserEvent));
+  },
 };
 
 export default EventActionCreators;

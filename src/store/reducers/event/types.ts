@@ -4,8 +4,8 @@ import { IEvent } from '../../../models/IEvent';
 export interface EventState {
   guests: IUser[];
   events: IEvent[];
-  isLoading: false;
-  error: string;
+  isLoading: boolean;
+  error: string | null;
 }
 
 export enum EEventActionTypes {
@@ -32,7 +32,7 @@ export interface SetEventIsLoadingAction {
 
 export interface SetEventErrorAction {
   type: EEventActionTypes.SET_ERROR;
-  payload: string;
+  payload: string | null;
 }
 
 export type EventAction =
