@@ -20,6 +20,7 @@ interface EventFormProps {
 
 const EventForm: FC <EventFormProps> = ({ guests, close }) => {
   const { user } = useTypedSelector((state) => state.auth);
+  const [dataPicker, setDataPicker] = useState<Date | null>(new Date());
   const { createEvent } = useActions();
   const [value, setValue] = useState('');
   const [userEvent, setUserEvent] = useState({
@@ -39,19 +40,13 @@ const EventForm: FC <EventFormProps> = ({ guests, close }) => {
     close((state) => !state);
   };
 
-  const [dataPicker, setDataPicker] = useState<Date | null>(new Date());
-
-  const submit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   const changeHandler = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setValue(event.target.value);
     setUserEvent({ ...userEvent, description: event.target.value });
   };
 
   return (
-    <form onSubmit={submit}>
+    <form onSubmit={addNewEvent}>
       <TextField
         name="event"
         label="Описание события"

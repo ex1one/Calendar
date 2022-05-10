@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Box, Button, Modal, Typography,
+  Box, Button, Grid, Modal, Typography,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Grid } from '@material-ui/core';
