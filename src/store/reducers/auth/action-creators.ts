@@ -17,7 +17,7 @@ const AuthActionCreators = {
       const response = UserService.getUsers();
       response
         .then((resolve) => {
-          const mockUser = resolve.data.find((user) => user.username === username && user.password === password);
+          const mockUser = resolve.data.find((userпш) => user.username === username && user.password === password);
           if (mockUser) {
             localStorage.setItem('auth', 'true');
             localStorage.setItem('username', mockUser.username);
