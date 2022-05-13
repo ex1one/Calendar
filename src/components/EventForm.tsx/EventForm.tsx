@@ -4,12 +4,10 @@ import React, {
 import {
   Button, Stack, TextField,
 } from '@mui/material';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import Selected from './Select/Selected';
+import Selected from '../Select/Selected';
 import { IUser } from '../../models/IUser';
 import { IEvent } from '../../models/IEvent';
-import EventDatePicker from './DatePicker/EventDatePicker';
+import EventDatePicker from '../DatePicker/EventDatePicker';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useActions';
 
@@ -33,16 +31,10 @@ const EventForm: FC <EventFormProps> = ({ guests, close }) => {
     setUserEvent({ ...userEvent, author: user.username });
   }, []);
 
-  const addNewEvent = (event: React.FormEvent<HTMLFormElement>) => {
+  const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     createEvent(userEvent);
     close((state) => !state);
-  };
-
-  const [dataPicker, setDataPicker] = useState<Date | null>(new Date());
-
-  const submit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
   };
 
   const changeHandler = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -62,17 +54,6 @@ const EventForm: FC <EventFormProps> = ({ guests, close }) => {
       />
       <EventDatePicker setUserEvent={setUserEvent} />
       <Selected userEvent={userEvent} setUserEvent={setUserEvent} guests={guests} />
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DesktopDatePicker
-          label="Дата события"
-          value={dataPicker}
-          minDate={new Date('2017-01-01')}
-          onChange={(newValue) => {
-            setDataPicker(newValue);
-          }}
-          renderInput={(params) => <TextField {...params} />}
-        />
-      </LocalizationProvider>
       <Stack spacing={2} sx={{ marginTop: 1 }}>
         <Button
           sx={{ height: 30 }}
