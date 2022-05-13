@@ -4,6 +4,8 @@ import {
 } from '@mui/material';
 import { IconButton } from '@material-ui/core';
 import { AccountCircle, NotificationsNone } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { AnyAction } from 'redux';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useActions';
 import EventModal from './EventModal';
@@ -13,13 +15,14 @@ const Navbar = () => {
   const { logout } = useActions();
   const { events } = useTypedSelector((state) => state.event);
   const [show, setShow] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
   const showNotifications = () => {
     setShow((state) => !state);
   };
 
   return (
-    <AppBar position="static">
+    <AppBar>
       <Toolbar>
         {isAuth
           ? (
@@ -50,8 +53,11 @@ const Navbar = () => {
                 {user.username}
                 <AccountCircle />
               </IconButton>
+              <div style={{ color: 'inherit', fontSize: '20px', marginRight: 20 }}>
+                {user.username}
+              </div>
               <Button
-                onClick={logout}
+                onClick={() => dispatch(logout() as unknown as AnyAction)}
                 variant="outlined"
                 color="inherit"
               >
@@ -70,5 +76,4 @@ const Navbar = () => {
     </AppBar>
   );
 };
-
 export default Navbar;
