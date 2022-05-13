@@ -2,8 +2,8 @@ import React, { FC, SetStateAction } from 'react';
 import {
   FormControl, InputLabel, MenuItem, Select, SelectChangeEvent,
 } from '@mui/material';
-import { IUser } from '../../../models/IUser';
-import { IEvent } from '../../../models/IEvent';
+import { IUser } from '../../models/IUser';
+import { IEvent } from '../../models/IEvent';
 
 interface SelectProps {
   guests: IUser[],

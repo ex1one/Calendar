@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import {
-  AppBar, Badge, Box, Button, Modal, Toolbar, Typography,
+  AppBar, Badge, Button, Toolbar, Typography,
 } from '@mui/material';
 import { IconButton } from '@material-ui/core';
 import { AccountCircle, NotificationsNone } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useActions';
-import EventModal from './EventModal';
+import EventModal from '../EventModal/EventModal';
 
 const Navbar = () => {
   const { isAuth, user } = useTypedSelector((state) => state.auth);
   const { logout } = useActions();
   const { events } = useTypedSelector((state) => state.event);
   const [show, setShow] = useState<boolean>(false);
-  const dispatch = useDispatch();
 
   const showNotifications = () => {
     setShow((state) => !state);

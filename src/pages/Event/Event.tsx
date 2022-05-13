@@ -4,10 +4,10 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Grid } from '@material-ui/core';
-import EventCalendar from 'components/Calendar/EventCalendar';
-import EventForm from 'components/EventForm.tsx/EventForm';
 import useActions from '../../hooks/useActions';
 import useTypedSelector from '../../hooks/useTypedSelector';
+import EventCalendar from '../../components/Calendar/EventCalendar';
+import EventForm from '../../components/EventForm.tsx/EventForm';
 
 const Event = () => {
   const [open, setOpen] = useState<boolean>(false);
