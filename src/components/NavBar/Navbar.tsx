@@ -5,7 +5,6 @@ import {
 import { IconButton } from '@material-ui/core';
 import { AccountCircle, NotificationsNone } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
-import { AnyAction } from 'redux';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useActions';
 import EventModal from './EventModal';
@@ -53,11 +52,8 @@ const Navbar = () => {
                 {user.username}
                 <AccountCircle />
               </IconButton>
-              <div style={{ color: 'inherit', fontSize: '20px', marginRight: 20 }}>
-                {user.username}
-              </div>
               <Button
-                onClick={() => dispatch(logout() as unknown as AnyAction)}
+                onClick={logout}
                 variant="outlined"
                 color="inherit"
               >
@@ -76,4 +72,5 @@ const Navbar = () => {
     </AppBar>
   );
 };
+
 export default Navbar;

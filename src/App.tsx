@@ -4,6 +4,9 @@ import './App.scss';
 import useActions from './hooks/useActions';
 import { IUser } from './models/IUser';
 import Navbar from './components/NavBar/Navbar';
+import './App.scss';
+import useActions from './hooks/useActions';
+import { IUser } from './models/IUser';
 
 const App = () => {
   const { setIsAuth, setUser } = useActions();
