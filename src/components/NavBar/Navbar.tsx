@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar>
+    <AppBar position="static">
       <Toolbar>
         {isAuth
           ? (

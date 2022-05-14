@@ -2,7 +2,10 @@ import { IUser } from '../../../models/IUser';
 import { IEvent } from '../../../models/IEvent';
 import {
   EEventActionTypes,
-  SetEventErrorAction, SetEventIsLoadingAction, SetEventsAction, SetGuestsAction,
+  SetEventErrorAction,
+  SetEventIsLoadingAction,
+  SetEventsAction,
+  SetGuestsAction,
 } from './types';
 import { AppDispatch } from '../../index';
 import UserService from '../../../API/UserService';
@@ -12,6 +15,12 @@ const EventActionCreators = {
   setEvents: (payload: IEvent[]): SetEventsAction => ({ type: EEventActionTypes.SET_EVENTS, payload }),
   setIsLoading: (payload: boolean): SetEventIsLoadingAction => ({ type: EEventActionTypes.SET_IS_LOADING, payload }),
   setError: (payload: string): SetEventErrorAction => ({ type: EEventActionTypes.SET_ERROR, payload }),
+  removeEvent: (payload: IEvent) => (dispatch: AppDispatch) => {
+    dispatch({ type: EEventActionTypes.SET_REMOVE_EVENT, payload });
+    const events = JSON.parse(localStorage.getItem('events') || '[]') as IEvent[];
+    const json = events.filter((event) => event.description !== payload.description);
+    localStorage.setItem('events', JSON.stringify(json));
+  },
   fetchGuests: () => (dispatch: AppDispatch) => {
     dispatch(EventActionCreators.setIsLoading(true));
     const response = UserService.getUsers();

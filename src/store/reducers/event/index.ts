@@ -17,6 +17,8 @@ export default function EventReducer(state = initialState, action: EventAction):
       return { ...state, isLoading: action.payload };
     case EEventActionTypes.SET_ERROR:
       return { ...state, error: action.payload };
+    case EEventActionTypes.SET_REMOVE_EVENT:
+      return { ...state, events: state.events.filter((event) => event.description !== action.payload.description) };
     default:
       return state;
   }
