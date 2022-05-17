@@ -1,7 +1,7 @@
 import { IUser } from '../../../models/IUser';
 import { IEvent } from '../../../models/IEvent';
 
-export interface EventState {
+export interface IEventState {
   guests: IUser[];
   events: IEvent[];
   isLoading: boolean;
@@ -16,34 +16,34 @@ export enum EEventActionTypes {
   SET_ERROR = 'SET_ERROR',
 }
 
-export interface SetGuestsAction {
+export interface ISetGuestsAction {
   type: EEventActionTypes.SET_GUESTS;
   payload: IUser[];
 }
 
-export interface SetEventsAction {
+export interface ISetEventsAction {
   type: EEventActionTypes.SET_EVENTS;
   payload: IEvent[];
 }
 
-export interface SetRemoveEventAction {
+export interface ISetRemoveEventAction {
   type: EEventActionTypes.SET_REMOVE_EVENT;
   payload: IEvent;
 }
 
-export interface SetEventIsLoadingAction {
+export interface ISetEventIsLoadingAction {
   type: EEventActionTypes.SET_IS_LOADING;
   payload: boolean;
 }
 
-export interface SetEventErrorAction {
+export interface ISetEventErrorAction {
   type: EEventActionTypes.SET_ERROR;
   payload: string | null;
 }
 
-export type EventAction =
-    SetGuestsAction |
-    SetEventsAction |
-    SetRemoveEventAction |
-    SetEventIsLoadingAction |
-    SetEventErrorAction;
+export type TEventAction =
+    ISetGuestsAction |
+    ISetEventsAction |
+    ISetRemoveEventAction |
+    ISetEventIsLoadingAction |
+    ISetEventErrorAction;

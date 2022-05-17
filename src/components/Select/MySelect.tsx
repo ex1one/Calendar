@@ -11,7 +11,7 @@ interface SelectProps {
   setUserEvent: React.Dispatch<SetStateAction<IEvent>>
 }
 
-const Selected: FC <SelectProps> = ({ guests, userEvent, setUserEvent }) => {
+const MySelect: FC <SelectProps> = ({ guests, userEvent, setUserEvent }) => {
   const handleChange = (event: SelectChangeEvent) => {
     setUserEvent((state) => ({ ...state, guest: event.target.value }));
   };
@@ -38,4 +38,4 @@ const Selected: FC <SelectProps> = ({ guests, userEvent, setUserEvent }) => {
   );
 };
 
-export default Selected;
+export default MySelect;

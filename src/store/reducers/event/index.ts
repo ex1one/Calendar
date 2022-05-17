@@ -1,13 +1,13 @@
-import { EEventActionTypes, EventAction, EventState } from './types';
+import { EEventActionTypes, IEventState, TEventAction } from './types';
 
-const initialState: EventState = {
+const initialState: IEventState = {
   error: null,
   events: [],
   guests: [],
   isLoading: false,
 };
 
-export default function EventReducer(state = initialState, action: EventAction): EventState {
+export default function EventReducer(state = initialState, action: TEventAction): IEventState {
   switch (action.type) {
     case EEventActionTypes.SET_GUESTS:
       return { ...state, guests: action.payload };

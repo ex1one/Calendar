@@ -6,7 +6,7 @@ import {
 } from '@mui/x-date-pickers';
 import { TextField } from '@mui/material';
 import { IEvent } from '../../models/IEvent';
-import formatDate from '../../utils/Date/date';
+import formatDate from '../../utilities/formatedDate';
 
 interface IDateProps {
   setUserEvent: React.Dispatch<SetStateAction<IEvent>>;

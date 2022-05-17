@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import AppRouter from './components/AppRouter/AppRouter';
 import useActions from './hooks/useActions';
 import { IUser } from './models/IUser';
-import Navbar from './components/NavBar/Navbar';
-import './App.scss';
+import Navbar from './components/Navbar/Navbar';
+import './styles/App.scss';
 
 const App = () => {
   const { setIsAuth, setUser } = useActions();

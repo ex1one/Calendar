@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { isWeekend } from 'date-fns';
 import { IEvent } from '../../models/IEvent';
-import formatDate from '../../utils/Date/date';
+import formatDate from '../../utilities/formatedDate';
 
 interface CalendarProps {
   events: IEvent[]

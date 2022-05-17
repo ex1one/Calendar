@@ -1,7 +1,9 @@
 import auth from './auth/index';
 import event from './event';
 
-export default {
+const reducers = {
   auth,
   event,
 };
+
+export default reducers;

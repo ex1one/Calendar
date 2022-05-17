@@ -7,7 +7,7 @@ import { Grid } from '@material-ui/core';
 import useActions from '../../hooks/useActions';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import EventCalendar from '../../components/Calendar/EventCalendar';
-import EventForm from '../../components/EventForm.tsx/EventForm';
+import EventForm from '../../components/EventForm/EventForm';
 
 const Event = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -33,7 +33,6 @@ const Event = () => {
         onClose={handleClick}
       >
         <Box sx={{
-          position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',

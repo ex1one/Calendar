@@ -4,12 +4,13 @@ import React, {
 import {
   Button, Stack, TextField,
 } from '@mui/material';
-import Selected from '../Select/Selected';
+import MySelect from '../Select/MySelect';
 import { IUser } from '../../models/IUser';
 import { IEvent } from '../../models/IEvent';
 import EventDatePicker from '../DatePicker/EventDatePicker';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useActions';
+import actionCreators from '../../store/reducers/action-creators';
 
 interface EventFormProps {
   guests: IUser[],
@@ -18,14 +19,14 @@ interface EventFormProps {
 
 const EventForm: FC <EventFormProps> = ({ guests, close }) => {
   const { user } = useTypedSelector((state) => state.auth);
-  const { createEvent } = useActions();
+  const { createEvent } = useActions(actionCreators.Event);
   const [value, setValue] = useState('');
-  const [userEvent, setUserEvent] = useState({
+  const [userEvent, setUserEvent] = useState<IEvent>({
     author: '',
     date: '',
     description: '',
     guest: '',
-  } as IEvent);
+  });
 
   useEffect(() => {
     setUserEvent({ ...userEvent, author: user.username });
@@ -53,7 +54,7 @@ const EventForm: FC <EventFormProps> = ({ guests, close }) => {
         sx={{ marginBottom: 1 }}
       />
       <EventDatePicker setUserEvent={setUserEvent} />
-      <Selected userEvent={userEvent} setUserEvent={setUserEvent} guests={guests} />
+      <MySelect userEvent={userEvent} setUserEvent={setUserEvent} guests={guests} />
       <Stack spacing={2} sx={{ marginTop: 1 }}>
         <Button
           sx={{ height: 30 }}

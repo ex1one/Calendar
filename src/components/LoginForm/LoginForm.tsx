@@ -24,7 +24,7 @@ const LoginForm = () => {
       case 'password':
         return setPasswordDirty(true);
       default:
-        return null;
+        return false;
     }
   };
 
