@@ -4,6 +4,7 @@ import useActions from './hooks/useActions';
 import { IUser } from './models/IUser';
 import Navbar from './components/Navbar/Navbar';
 import './styles/App.scss';
+import actionCreators from './store/reducers/action-creators';
 
 const App = () => {
   const { setIsAuth, setUser } = useActions();

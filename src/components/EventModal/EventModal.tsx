@@ -4,9 +4,9 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import DeleteIcon from '@mui/icons-material/Delete';
+import useActions from '../../hooks/useActions';
 import { IEvent } from '../../models/IEvent';
 import styles from './eventModal.module.scss';
-import useActions from '../../hooks/useActions';
 
 interface IModalProps {
   events: IEvent[];
@@ -22,18 +22,7 @@ const EventModal: FC <IModalProps> = ({ show, events, showNotifications }) => {
       open={show}
       onClose={showNotifications}
     >
-      <Box sx={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        backgroundColor: '#eee',
-        border: '1px solid #000',
-        boxShadow: 24,
-        p: 4,
-      }}
-      >
+      <Box className={styles.Box}>
         <Typography variant="h6" component="h2">
           События
           <CloseIcon

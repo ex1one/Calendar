@@ -3,6 +3,11 @@
         "react": {
             "version": "detect",
             "pragma": "React"
+        },
+        "import/resolver": {
+            "node": {
+                "alwaysTryTypes": true
+            }
         }
     },
     "env": {
@@ -22,7 +27,8 @@
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "modules": true
         },
         "ecmaVersion": 2021,
         "sourceType": "module",
@@ -30,7 +36,8 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "import"
     ],
     "rules": {
         "react/function-component-definition": [2, {"namedComponents":  "arrow-function" }],

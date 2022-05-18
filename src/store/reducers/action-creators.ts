@@ -1,9 +1,9 @@
 import AuthActionCreators from './auth/action-creators';
 import EventActionCreators from './event/action-creators';
 
-const actionCreators = {
-  Auth: AuthActionCreators,
-  Event: EventActionCreators,
+const allActionCreators = {
+  ...AuthActionCreators,
+  ...EventActionCreators,
 };
 
-export default actionCreators;
+export default allActionCreators;

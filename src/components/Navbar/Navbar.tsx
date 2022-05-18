@@ -7,11 +7,12 @@ import { AccountCircle, NotificationsNone } from '@mui/icons-material';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useActions';
 import EventModal from '../EventModal/EventModal';
+import selectors from '../../store/selectors/selectors';
 
 const Navbar = () => {
-  const { isAuth, user } = useTypedSelector((state) => state.auth);
+  const { isAuth, user } = useTypedSelector(selectors.auth);
   const { logout } = useActions();
-  const { events } = useTypedSelector((state) => state.event);
+  const { events } = useTypedSelector(selectors.event);
   const [show, setShow] = useState<boolean>(false);
 
   const showNotifications = () => {

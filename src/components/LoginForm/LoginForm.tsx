@@ -7,6 +7,7 @@ import { CircularProgress } from '@material-ui/core';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import styles from './loginForm.module.scss';
 import useActions from '../../hooks/useActions';
+import selectors from '../../store/selectors/selectors';
 
 const LoginForm = () => {
   const [userName, setUserName] = useState<string>('');
@@ -14,7 +15,7 @@ const LoginForm = () => {
   const [userNameDirty, setUserNameDirty] = useState(false);
   const [passwordDirty, setPasswordDirty] = useState(false);
   const [formValid, setFormValid] = useState(false);
-  const { error, isLoading } = useTypedSelector((state) => state.auth);
+  const { error, isLoading } = useTypedSelector(selectors.auth);
   const { login } = useActions();
 
   const blurHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

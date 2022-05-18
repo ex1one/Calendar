@@ -4,16 +4,18 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Grid } from '@material-ui/core';
+import EventCalendar from '@components/Calendar/EventCalendar';
 import useActions from '../../hooks/useActions';
 import useTypedSelector from '../../hooks/useTypedSelector';
-import EventCalendar from '../../components/Calendar/EventCalendar';
 import EventForm from '../../components/EventForm/EventForm';
+import styles from './event.module.scss';
+import selectors from '../../store/selectors/selectors';
 
 const Event = () => {
   const [open, setOpen] = useState<boolean>(false);
   const { fetchGuests, fetchEvents } = useActions();
-  const { guests, events } = useTypedSelector((state) => state.event);
-  const { user } = useTypedSelector((state) => state.auth);
+  const { guests, events } = useTypedSelector(selectors.event);
+  const { user } = useTypedSelector(selectors.auth);
 
   useEffect(() => {
     fetchGuests();
@@ -32,17 +34,7 @@ const Event = () => {
         open={open}
         onClose={handleClick}
       >
-        <Box sx={{
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: 400,
-          backgroundColor: '#eee',
-          border: '1px solid #000',
-          boxShadow: 24,
-          p: 4,
-        }}
-        >
+        <Box className={styles.Box}>
           <Typography variant="h6" component="h2">
             Добавить событие
             <CloseIcon

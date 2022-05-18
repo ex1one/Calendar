@@ -10,7 +10,7 @@ import { IEvent } from '../../models/IEvent';
 import EventDatePicker from '../DatePicker/EventDatePicker';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useActions';
-import actionCreators from '../../store/reducers/action-creators';
+import selectors from '../../store/selectors/selectors';
 
 interface EventFormProps {
   guests: IUser[],
@@ -18,8 +18,8 @@ interface EventFormProps {
 }
 
 const EventForm: FC <EventFormProps> = ({ guests, close }) => {
-  const { user } = useTypedSelector((state) => state.auth);
-  const { createEvent } = useActions(actionCreators.Event);
+  const { user } = useTypedSelector(selectors.auth);
+  const { createEvent } = useActions();
   const [value, setValue] = useState('');
   const [userEvent, setUserEvent] = useState<IEvent>({
     author: '',
